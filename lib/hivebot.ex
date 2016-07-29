@@ -6,8 +6,10 @@ defmodule Hivebot do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-
-    slack_token = Application.get_env(:hivebot, :slack_token)
+    unless Mix.env == :prod do
+      Envy.auto_load
+    end
+    slack_token = System.get_env("HIVEBOT_SLACK_TOKEN")
 
     # Define workers and child supervisors to be supervised
     children = [

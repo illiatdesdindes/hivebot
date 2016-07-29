@@ -29,5 +29,5 @@ use Mix.Config
 #
 #     import_config "#{Mix.env}.exs"
 
-config :hivebot,
-  slack_token: System.get_env("HIVEBOT_SLACK_TOKEN")
+#config :hivebot,
+#  slack_token: System.get_env("HIVEBOT_SLACK_TOKEN")
