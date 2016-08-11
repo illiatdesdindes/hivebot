@@ -2,6 +2,9 @@ defmodule Hivebot.Slack do
 
   use Slack
 
+  alias Hivebot.Parser
+  alias Hivebot.Executor
+
   ## API
   ######
 
@@ -29,10 +32,13 @@ defmodule Hivebot.Slack do
     :ok
   end
 
-  def handle_message(message = %{type: "message", text: "hello"}, slack, state) do
-    reply = "Hurray ! #{slack.users[message.user].name}, hello to you !"
-    IO.puts reply
-    send_message reply, message.channel, slack
+  def handle_message(message = %{type: "message"}, slack, state) do
+    with {:ok, command} <- Parser.parse(message),
+      {:reply, reply, state} <- Executor.exec(command, message, slack, state) do
+      send_message reply, message.channel, slack
+    else
+      :noop -> :noop
+    end
 
     {:ok, state}
   end
