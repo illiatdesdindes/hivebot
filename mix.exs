@@ -14,7 +14,7 @@ defmodule Hivebot.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :slack],
+    [applications: [:logger, :slack, :httpoison],
      mod: {Hivebot, []}]
   end
 
@@ -29,9 +29,12 @@ defmodule Hivebot.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:slack, "~> 0.7.0"},
+      {:slack, "~> 0.6.0"},
       {:envy, "~> 1.0.0"},
-      {:websocket_client, git: "https://github.com/jeremyong/websocket_client"}
+      {:httpoison, "~> 0.8"},
+      {:websocket_client, git: "https://github.com/jeremyong/websocket_client"},
+      {:mix_test_watch, "~> 0.2", only: :dev},
+      {:mr_t, "~> 0.5.0", only: [:test, :dev]},
     ]
   end
 end
