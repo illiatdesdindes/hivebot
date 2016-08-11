@@ -4,7 +4,7 @@ defmodule Hivebot.Parser do
     {:ok, :hello}
   end
 
-  def parse(%{ text: "/meme" <> query}) do
+  def parse(%{ text: "/meme " <> query}) do
     {:ok, {:meme, String.trim(query)}}
   end
 
