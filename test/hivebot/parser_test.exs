@@ -6,15 +6,16 @@ defmodule Hivebot.ParserTest do
   alias Hivebot.Parser
 
   test "parse hello text" do
-    assert {:ok, :hello} == Parser.parse %{text: "hello"}
+    assert Parser.parse %{text: "hello"} == {:ok, :hello}
   end
 
   test "parse meme command" do
-    assert {:ok, {:meme, "minion banana"}} == Parser.parse %{text: "/meme minion banana"}
+    assert Parser.parse %{text: "/meme minion banana"} == {:ok, {:meme, "minion banana"}}
+    assert Parser.parse %{text: "/memem minion banana"} == {:ok, :noop}
   end
 
   test "parse a noop text" do
-    assert {:ok, :noop} == Parser.parse %{text: "text that dosn't do anything"}
+    assert Parser.parse %{text: "text that dosn't do anything"} == {:ok, :noop}
   end
 
 end
