@@ -1,6 +1,6 @@
 defmodule Hivebot.MemeCenter do
 
-  # Exemple Meme
+  # Exemple Meme data from meme center
   #%{
   #  added_date: 1442596034,
   #  comcount: "43",
