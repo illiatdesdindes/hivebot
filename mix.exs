@@ -35,6 +35,7 @@ defmodule Hivebot.Mixfile do
       {:websocket_client, git: "https://github.com/jeremyong/websocket_client"},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:mr_t, "~> 0.5.0", only: [:test, :dev]},
+      {:ex_unit_notifier, "~> 0.1", only: :test},
     ]
   end
 end
