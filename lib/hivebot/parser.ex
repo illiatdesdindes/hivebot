@@ -1,15 +1,21 @@
 defmodule Hivebot.Parser do
 
-  def parse(%{text: "hello"}) do
+  def parse(message = %{text: text}) do
+    cond do
+      text =~ ~r/hello/ ->
+        hello(message)
+      capture = Regex.named_captures(~r/meme +(?<query>\w.*)/, text) ->
+        meme(message, capture)
+      true -> :noop
+    end
+  end
+
+  defp hello(%{text: "hello"}) do
     {:ok, :hello}
   end
 
-  def parse(%{ text: "meme " <> query}) do
+  defp meme(message, %{"query" => query}) do
     {:ok, {:meme, String.trim(query)}}
-  end
-
-  def parse(_message) do
-    :noop
   end
 
 end
