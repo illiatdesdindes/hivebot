@@ -5,9 +5,11 @@ defmodule Hivebot.Executor do
     {:reply, reply, state}
   end
 
-  def exec({:meme, query}, _message, _slack, state) do
-    reply = Hivebot.MemeCenter.random_meme(query).img_url
-    {:reply, reply, state}
+  def exec({:meme, query}, message, slack, state) do
+    case Hivebot.MemeCenter.random_meme(query) do
+      :empty -> {:reply, "Sorry #{slack.users[message.user].name} can't find anything", state}
+      meme   -> {:reply, meme.img_url, state}
+    end
   end
 
   def exec(_,_,_,_) do

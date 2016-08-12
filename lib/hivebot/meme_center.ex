@@ -31,16 +31,17 @@ defmodule Hivebot.MemeCenter do
   }
 
   def random_meme(query) do
-    query
-    |> search_meme
-    |> Enum.random
+    case query |> search_meme do
+      []     -> :empty
+      meme   -> Enum.random meme
+    end
   end
 
   def search_meme(query) do
     get("/search/#{URI.encode(query)}/1").body
     |> JSX.decode!
     |> Enum.map(fn meme -> symbolify(meme) end)
-    |> Enum.map &construct_img_url/1
+    |> Enum.map(&construct_img_url/1)
   end
 
   def get(url) do
@@ -50,7 +51,7 @@ defmodule Hivebot.MemeCenter do
   defp symbolify(meme) do
     meme
     |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
-    |> Enum.into %{}
+    |> Enum.into(%{})
   end
 
   defp construct_img_url(meme) do
