@@ -33,7 +33,11 @@ defmodule Hivebot.Mixfile do
       {:envy, "~> 1.0.0"},
       {:httpoison, "~> 0.8"},
       {:mix_test_watch, "~> 0.2", only: :dev},
+
       {:mr_t, "~> 0.5.0", only: [:test, :dev]},
+
+      {:ex_unit_notifier, "~> 0.1", only: :test},
+      {:mock, "~> 0.1.1", only: :test},
     ]
   end
 end

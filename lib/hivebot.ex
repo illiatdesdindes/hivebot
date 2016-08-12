@@ -20,6 +20,12 @@ defmodule Hivebot do
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Hivebot.Supervisor]
-    Supervisor.start_link(children, opts)
+
+    # Bad hack to prevent automaticaly connecting to slack evry time we run test
+    if Mix.env == :test do
+      {:ok, self()}
+    else
+      Supervisor.start_link(children, opts)
+    end
   end
 end
