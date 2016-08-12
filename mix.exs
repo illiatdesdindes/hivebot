@@ -30,6 +30,7 @@ defmodule Hivebot.Mixfile do
   defp deps do
     [
       {:slack, "~> 0.6.0"},
+      {:websocket_client, git: "https://github.com/jeremyong/websocket_client", override: true},
       {:envy, "~> 1.0.0"},
       {:httpoison, "~> 0.8"},
       {:mix_test_watch, "~> 0.2", only: :dev},
