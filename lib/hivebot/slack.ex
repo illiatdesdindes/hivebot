@@ -2,6 +2,8 @@ defmodule Hivebot.Slack do
 
   use Slack
 
+  import Logger
+
   alias Hivebot.Parser
   alias Hivebot.Executor
 
@@ -33,6 +35,8 @@ defmodule Hivebot.Slack do
   end
 
   def handle_message(message = %{type: "message"}, slack, state) do
+    info(fn -> inspect(message) end)
+
     with {:ok, command} <- Parser.parse(message),
       {:reply, reply, state} <- Executor.exec(command, message, slack, state) do
       send_message reply, message.channel, slack
@@ -44,9 +48,7 @@ defmodule Hivebot.Slack do
   end
 
   def handle_message(message, slack, state) do
-    IO.puts "\n==== NEW message ===="
-    IO.inspect message
-    IO.inspect state
+    info(fn -> inspect(message) end)
 
     {:ok, state}
   end
