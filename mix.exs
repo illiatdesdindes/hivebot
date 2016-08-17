@@ -33,7 +33,9 @@ defmodule Hivebot.Mixfile do
       {:websocket_client, git: "https://github.com/jeremyong/websocket_client", override: true},
       {:envy, "~> 1.0.0"},
       {:httpoison, "~> 0.8"},
+
       {:mix_test_watch, "~> 0.2", only: :dev},
+      {:dialyxir, "~> 0.3.5", only: [:dev]},
 
       {:mr_t, "~> 0.5.0", only: [:test, :dev]},
 
