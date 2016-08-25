@@ -4,7 +4,7 @@ defmodule Hivebot.Parser do
     cond do
       text =~ ~r/hello/ ->
         hello(message)
-      capture = Regex.named_captures(~r/meme +(?<query>\w.*)/, text) ->
+      capture = Regex.named_captures(~r/^meme +(?<query>\w.*)/, text) ->
         meme(message, capture)
       true -> :noop
     end
