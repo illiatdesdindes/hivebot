@@ -1,4 +1,5 @@
 %{"certifi": {:hex, :certifi, "0.4.0", "a7966efb868b179023618d29a407548f70c52466bf1849b9e8ebd0e34b7ea11f", [:rebar3], []},
+  "dialyxir": {:hex, :dialyxir, "0.3.5", "eaba092549e044c76f83165978979f60110dc58dd5b92fd952bf2312f64e9b14", [:mix], []},
   "envy": {:hex, :envy, "1.0.0", "d8385715b908f3972f85cbffa0ffbd36fec017601258bcb6be9003c11ece3e75", [:mix], []},
   "ex_unit_notifier": {:hex, :ex_unit_notifier, "0.1.1", "53d4d3a351d77f3d73e39aa04a59bd70bcfd16cae0d19a64b3bcda0a36703b6f", [:mix], []},
   "exfswatch": {:hex, :exfswatch, "0.2.1", "3f34190e2750ae6d924ce53729bb40e050dd8a08fee683847e6ddfa03ea5429f", [:mix], [{:fs, "~> 0.9", [hex: :fs, optional: false]}]},
